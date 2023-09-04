@@ -84,3 +84,10 @@ LEFT JOIN autores ON livros.autor_id = autores.id ;
 SELECT alunos.nome , matriculas.curso
 FROM alunos 
 RIGHT JOIN matriculas ON alunos.id = matriculas.aluno_id;
+
+
+-- Utilizando INNER JOIN, mostre somente os alunos e cursos que possuem correspondência mútua.
+
+SELECT alunos.nome , matriculas.curso
+FROM alunos 
+INNER JOIN matriculas ON alunos.id = matriculas.aluno_id;
