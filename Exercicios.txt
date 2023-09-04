@@ -101,3 +101,12 @@ INNER JOIN livros ON autores.id = livros.autor_id
 GROUP BY autores.id , autores.nome  
 ORDER BY qtd_livros DESC 
 LIMIT 1;
+
+
+-- Determine o produto que gerou a menor receita.
+
+SELECT produto , SUM(receita) as total_receita 
+FROM vendas 
+GROUP BY produto 
+ORDER BY total_receita ASC 
+LIMIT 1;
