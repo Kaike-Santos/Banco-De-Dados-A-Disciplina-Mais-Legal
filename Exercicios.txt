@@ -47,4 +47,12 @@ GROUP BY id ;
 SELECT produto , SUM(receita) as total_receita 
 FROM vendas 
 GROUP BY produto 
-HAVING SUM(receita) > 10000; 
+HAVING SUM(receita) > 10000;
+
+-- Determine os autores que têm mais de 2 livros publicados.
+
+SELECT autores.nome 
+FROM autores 
+INNER JOIN livros ON autores.id = livros.autor_id
+GROUP BY autores.id , autores.nome  
+HAVING COUNT(livros.id) >= 2 ;
