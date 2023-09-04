@@ -28,3 +28,10 @@ Select nome , COUNT(autor_id) as total_livros
 FROM autores  
 INNER JOIN livros on autores.id = livros.autor_id 
 GROUP BY nome;
+
+-- Agrupe os alunos por curso e conte quantos alunos estão matriculados em cada curso.
+
+SELECT matriculas.curso , COUNT(alunos.id) as quantidade_aluno
+FROM matriculas 
+INNER JOIN alunos on alunos.id = matriculas.aluno_id  
+GROUP BY matriculas.curso;
