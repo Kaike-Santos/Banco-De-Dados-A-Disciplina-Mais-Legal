@@ -77,3 +77,10 @@ INNER JOIN matriculas ON alunos.id = matriculas.aluno_id
 SELECT autores.nome as autor , livros.titulo
 FROM livros
 LEFT JOIN autores ON livros.autor_id = autores.id ;
+
+
+-- Com RIGHT JOIN, liste todos os cursos e alunos, mesmo que o curso não tenha nenhum aluno matriculado.
+
+SELECT alunos.nome , matriculas.curso
+FROM alunos 
+RIGHT JOIN matriculas ON alunos.id = matriculas.aluno_id;
