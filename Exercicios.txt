@@ -21,3 +21,10 @@ WHERE matriculas.curso = "Engenharia de Software";
 SELECT produto, SUM(receita) as total_vendas
 FROM vendas 
 GROUP BY produto; 
+
+-- Determine o número total de livros por autor. 
+
+Select nome , COUNT(autor_id) as total_livros
+FROM autores  
+INNER JOIN livros on autores.id = livros.autor_id 
+GROUP BY nome;
