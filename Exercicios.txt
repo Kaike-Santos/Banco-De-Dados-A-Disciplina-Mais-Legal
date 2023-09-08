@@ -110,3 +110,10 @@ FROM vendas
 GROUP BY produto 
 ORDER BY total_receita ASC 
 LIMIT 1;
+
+-- Determine o número total de matrículas para cada aluno.
+
+SELECT alunos.nome  ,  COUNT(matriculas.id) as total_matriculas
+from alunos
+LEFT JOIN matriculas on alunos.id = matriculas.aluno_id 
+GROUP BY alunos.nome; 
