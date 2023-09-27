@@ -82,3 +82,24 @@ END ;
 //
 DELIMITER ;
 CALL sp_TitulosPorCategoria ('romance') ; 
+
+-- Escreva uma stored procedure sp_AdicionarLivro para adicionar um novo livro à tabela Livro.
+--  A procedure deve tratar possíveis erros, como tentativas de adicionar um livro com um título que já existe.
+DELIMITER //
+CREATE PROCEDURE sp_AdicionarLivro ( IN NTitulo VARCHAR(255) ,NEditora_ID INT,NAno_Publicacao INT,NNumero_Paginas INT,NCategoria_ID INT )
+BEGIN 
+DECLARE checagem  varchar(50);
+SELECT titulo INTO checagem FROM livro WHERE TItulo = NTitulo;
+
+IF checagem IS NULL THEN 
+INSERT INTO Livro (Titulo, Editora_ID, Ano_Publicacao, Numero_Paginas, Categoria_ID)
+VALUES (NTitulo, NEditora_ID, NAno_Publicacao, NNumero_Paginas, NCategoria_ID);
+
+ELSE 
+set checagem = 'titulo ja existente';
+SELECT checagem;
+END IF ; 
+END ;
+//
+DELIMITER ; 
+CALL sp_AdicionarLivro ('A Jornada', 1, 2000, 320, 1) ;
