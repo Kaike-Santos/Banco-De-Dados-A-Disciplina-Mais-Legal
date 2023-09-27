@@ -23,3 +23,17 @@ END;
 //
 DELIMITER ;
 call sp_LivrosPorCategoria ('romance');
+
+-- Escreva uma stored procedure sp_ContarLivrosPorCategoria que receba o nome de uma categoria e retorne o número total de livros nessa categoria.
+DELIMITER //
+create procedure sp_ContarLivrosPorCategoria (IN nomeCategoria Varchar(50)  ) 
+BEGIN
+SELECT categoria.nome, COUNT(livro.Categoria_ID) as totalLivros
+FROM livro
+INNER JOIN categoria ON livro.Categoria_ID = categoria.Categoria_ID
+WHERE categoria.nome = nomeCategoria
+GROUP BY livro.Categoria_ID; 
+END;
+//
+DELIMITER ;
+call sp_ContarLivrosPorCategoria ('romance');
