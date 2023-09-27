@@ -103,3 +103,15 @@ END ;
 //
 DELIMITER ; 
 CALL sp_AdicionarLivro ('A Jornada', 1, 2000, 320, 1) ;
+
+-- Elabore uma stored procedure que identifique e retorne o nome do autor mais antigo (com base na data de nascimento) registrado no banco de dados.
+DELIMITER //
+CREATE PROCEDURE sp_indentificarAutor () 
+BEGIN 
+SELECT 	Nome , Sobrenome 
+FROM autor 
+ORDER BY Data_Nascimento ASC ;
+END ;  
+//
+DELIMITER ; 
+CALL sp_indentificarAutor ();
