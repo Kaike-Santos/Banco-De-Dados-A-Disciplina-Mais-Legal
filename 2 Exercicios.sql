@@ -115,3 +115,26 @@ END ;
 //
 DELIMITER ; 
 CALL sp_indentificarAutor ();
+
+-- Escolha uma das stored procedures que você já desenvolveu e adicione comentários detalhados, explicando o funcionamento de cada parte da procedure. 
+DELIMITER //
+create procedure sp_VerificarLivrosCategoria (IN nomeCategoria Varchar(50) )
+BEGIN
+DECLARE resultado Varchar(50) ; 
+DECLARE Ncategoria INT ;
+SELECT Categoria_ID INTO Ncategoria FROM Categoria WHERE Nome = nomeCategoria;
+
+-- começo a procedure declarando 2 variaveis , resultado e Ncategoria , em Ncategoria eu vou transformar o nome que eu coloquei no call da procedure em um id de nome de categoria
+-- então eu checo se esse id e nulo ou não , se for nulo eu atribuo a variavel resultado a resposta 'não , esta categoria possui livros' 
+-- se não for nulo , 'sim , esta categoria possui livros' , e por final eu dou um select em resultado 
+
+IF Ncategoria IS NOT NULL  THEN 
+set resultado = 'sim , esta categoria possui livros';
+
+ELSE 
+set resultado = 'não , esta categoria possui livros'; 
+END IF ;
+SELECT resultado ;
+END ;
+//
+DELIMITER ;
