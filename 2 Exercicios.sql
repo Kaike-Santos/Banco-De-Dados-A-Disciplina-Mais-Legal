@@ -37,3 +37,24 @@ END;
 //
 DELIMITER ;
 call sp_ContarLivrosPorCategoria ('romance');
+
+-- Crie uma stored procedure chamada sp_VerificarLivrosCategoria 
+-- que aceite o nome de uma categoria como parâmetro e retorne se a categoria possui livros ou não.
+DELIMITER //
+create procedure sp_VerificarLivrosCategoria (IN nomeCategoria Varchar(50) )
+BEGIN
+DECLARE resultado Varchar(50) ; 
+DECLARE Ncategoria INT ;
+SELECT Categoria_ID INTO Ncategoria FROM Categoria WHERE Nome = nomeCategoria;
+
+IF Ncategoria IS NOT NULL  THEN 
+set resultado = 'sim , esta categoria possui livros';
+
+ELSE 
+set resultado = 'não , esta categoria possui livros'; 
+END IF ;
+SELECT resultado ;
+END ;
+//
+DELIMITER ;
+CALL sp_VerificarLivrosCategoria('romance') ;
