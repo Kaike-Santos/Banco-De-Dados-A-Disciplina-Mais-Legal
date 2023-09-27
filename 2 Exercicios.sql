@@ -58,3 +58,14 @@ END ;
 //
 DELIMITER ;
 CALL sp_VerificarLivrosCategoria('romance') ;
+
+-- Desenvolva uma stored procedure chamada sp_LivrosAteAno que liste todos os livros publicados até um ano específico fornecido como parâmetro.
+DELIMITER //
+CREATE PROCEDURE sp_LivrosAteAno (IN ano int )
+BEGIN
+SELECT titulo FROM livro WHERE  Ano_Publicacao < ano ;
+END ;
+//
+DELIMITER ;
+
+CALL sp_LivrosAteAno (2001) ;
