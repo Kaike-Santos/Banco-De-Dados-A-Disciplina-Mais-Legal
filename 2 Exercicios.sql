@@ -138,3 +138,20 @@ SELECT resultado ;
 END ;
 //
 DELIMITER ;
+
+-- Desenvolva uma stored procedure chamada sp_LivrosESeusAutores que liste todos os livros e seus respectivos autores.
+-- A lista deve apresentar o título do livro, nome e sobrenome do autor.
+DELIMITER //
+CREATE PROCEDURE sp_LivrosESeusAutores ()
+BEGIN 
+SELECT livro.Titulo , autor.Nome , autor.Sobrenome 
+FROM livro 
+INNER JOIN autor_livro
+on livro.Livro_ID = autor_livro.Autor_ID
+INNER JOIN autor
+on autor_livro.Autor_ID = autor.Autor_ID;
+END; 
+//
+DELIMITER ; 
+
+CALL sp_LivrosESeusAutores (); 
