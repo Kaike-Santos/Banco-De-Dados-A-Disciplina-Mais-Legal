@@ -69,3 +69,16 @@ END ;
 DELIMITER ;
 
 CALL sp_LivrosAteAno (2001) ;
+
+-- crie uma stored procedure chamada sp_TitulosPorCategoria que liste apenas os títulos dos livros de uma categoria específica.
+DELIMITER //
+CREATE PROCEDURE sp_TitulosPorCategoria (IN NomeCategoria Varchar(50)) 
+BEGIN
+SELECT titulo
+FROM livro 
+inner join categoria 
+WHERE categoria.Nome = 'romance' ;
+END ;
+//
+DELIMITER ;
+CALL sp_TitulosPorCategoria ('romance') ; 
